@@ -8,10 +8,7 @@ function addBookToLibrary(Book) {
     return myLibrary.push(Book);
 }
 
-function showBooks() {
-    //loop through every book and display them in some sort of table
 
-}
 
 //Add a “NEW BOOK” button that
 // brings up a form allowing users
@@ -21,12 +18,23 @@ function showBooks() {
 // whether it’s been read and
 // anything else you might want.
 
-let button = document.querySelector(".newBook")
-let Form = document.querySelector(".form-container")
+let Button = document.querySelector(".newBook");
+let submitButton = document.querySelector(".button-sumbit");
+
+let Form = document.querySelector(".input-form");
+Button.addEventListener( 'click', displayForm);
+submitButtonButton.addEventListener( 'click', closePopUp);
 
 
-button.addEventListener('click', displayForm);
+
+
+function showBooks() {
+    //loop through every book and display them in some sort of table
+    pass
+}
 function displayForm() {
-    console.log(Form.classList);
-Form.classList.add("deactivated");
+ Form.classList.add("open-popup");
+}
+function closePopUp() {
+    Form.classList.remove("open-popup");
 }
