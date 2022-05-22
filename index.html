@@ -8,26 +8,38 @@
   <script src="script.js" defer></script>
 </head>
 <body>
+
 <div class="main-container">
+
     <div class="button-container">    <button class="newBook "> Add A new Book!</button>
     </div>
-
-
     <div class="form-container ">
-        <form class="input-form" action="index.html" method="post">
-            <label for="Title"> Title</label>
-            <input type="text" name="Title" id="Title" placeholder="Title">
+
+        <div class="library-container" id="library">
+
+        </div>
+        <form class="input-form" action="index.html" method="post" id="FORM">
+            <label class="title-input" for="Title"> Title</label>
+            <input type="text" name="Title" id="Title" placeholder="Title" required>
 
             <label for="Author"> Author</label>
-            <input type="text" name="Author" id="Author" placeholder="Author">
+            <input type="text" name="Author" id="Author" placeholder="Author" required>
 
             <label for="n-pages"> Number of Pages</label>
-            <input type="number" name="n-pages" id="n-pages" placeholder="69">
+            <input type="number" name="n-pages" id="n-pages" placeholder="69" required>
 
-            <label for="p-date"> publishing date</label>
-            <input type="date" name="Date" id="p-date" placeholder="1980">
+            <label for="Date"> publishing date</label>
+            <input type="number" min="100" max="2022" step="1" name="Date" id="Date" placeholder="1980" required>
+
+            <label class="checkbox bounce" for="read"> Read
+            <input type="checkbox" id="read" class="read">
+
+            </label>
+
+
+
             <div class="button-placement">
-                <button type="submit" class="button-sumbit">Submit</button>
+            <button type="submit" class="button-sumbit">Submit</button>
             </div>
 
         </form>
@@ -38,6 +50,6 @@
 </div>
 
 
-
+<h1 class="my-title">My Digital Library</h1>
 </body>
 </html>
