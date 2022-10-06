@@ -49,7 +49,7 @@ function showBooks() {
 }
 
 function slider(checkbox) {
-    if (checkbox == false) {
+    if (checkbox === false) {
         return ""
     }
     return "checked"
@@ -58,11 +58,46 @@ function displayForm() {
  Form.classList.add("open-popup");
 }
 function closePopUp() {
-    if (form.checkValidity() == false) {
+    if (form.checkValidity() === false) {
         return;
     }
     Form.classList.remove("open-popup");
 }
+ checkFormValidity()
+ function checkFormValidity() {
+    const form =Object.assign({}, formHtmlGetter())
+     
+     for (const formKey in form) {
+          checkValidity(form[formKey])
+          setMessage(form[formKey])
+     }
+ }
+  function formHtmlGetter() {
+      object = {}
+      object.title = document.getElementById('Title')
+      object.author = document.getElementById("Author")
+      object.pages = document.getElementById("nOfPages")
+      object.date = document.getElementById("Date")
+      return object
+  }
+   function checkValidity(element) {
+        element.addEventListener("input", () => {
+            //by default the validity object returns false when a custom validity message is shown so I set the string to empty as a woks round
+            element.setCustomValidity(""); 
+            element.checkValidity();
+        })
+   }
+    function setMessage(element) {
+        const messages = {
+             Title: "please add a book title",
+             Author: "please add an author to this book",
+             nOfPages: "please add a number of pages",
+             Date: "please add the release year of this book"
+        }
+        element.addEventListener("invalid", () => {
+             element.setCustomValidity(messages[element.id])
+        })
+    }
 function deleteElement(id) {
     myLibrary = myLibrary.filter(function( obj ) {
         return obj.id !== id;
@@ -73,7 +108,7 @@ function deleteElement(id) {
 
 let switchBool = false
 function switchRead(Book) {
-    if (switchBool == true) {
+    if (switchBool === true) {
         switchBool = false;
         return;
     }
@@ -83,7 +118,7 @@ function switchRead(Book) {
     console.log(counter);
     let selectedBook = document.getElementById(selector)
     console.log(selectedBook)
-    if (Book.read == false) {
+    if (Book.read === false) {
         Book.read = true;
         selectedBook.classList.add('isread');
         console.log(selectedBook.classList)
@@ -148,7 +183,7 @@ function createBookElement(Book) {
     bookelement.appendChild(pages)
     bookelement.appendChild(switchslider)
 
-    if (Book.read == true) {
+    if (Book.read === true) {
         bookelement.classList.add('isread');
         let child = switchslider.querySelector("input");
         console.log(child);
@@ -171,7 +206,7 @@ function handleSubmit(event) {
     
     let read = document.querySelector('.read').checked;
 
-    var checkValue = document.getElementById("read").checked;
+    // var checkValue = document.getElementById("read").checked;
 
     let book = new Book(title, author, pages, date, read);
     console.log(book);
